@@ -145,6 +145,18 @@ const prepareUserOperation = async (
         verificationGasLimit: DUMMY_GAS_LIMIT,
       },
       chain: polygon, // change the chain if required
+      context: {
+        "mode": "SPONSORED",
+        "calculateGasLimits": false,
+        "expiryDuration": 300, // duration (secs) for which the generate paymasterAndData will be valid. Default duration is 300 secs. 
+        "sponsorshipInfo": {
+            "webhookData": {},
+            "smartAccountInfo": {
+                "name": "SAFE",
+                "version": "1.4.1"
+            }
+        }
+      }
     })
   ).paymasterAndData;
 
@@ -191,6 +203,18 @@ const prepareUserOperation = async (
       signature: dummySignature,
     },
     chain: polygon, // change the chain if required
+    context: {
+      "mode": "SPONSORED",
+      "calculateGasLimits": false,
+      "expiryDuration": 300, // duration (secs) for which the generate paymasterAndData will be valid. Default duration is 300 secs. 
+      "sponsorshipInfo": {
+          "webhookData": {},
+          "smartAccountInfo": {
+              "name": "SAFE",
+              "version": "1.4.1"
+          }
+      }
+    }
   });
 
   const signature = await safeAccount.signUserOperation({
